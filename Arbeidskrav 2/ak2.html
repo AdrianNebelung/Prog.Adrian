@@ -25,17 +25,47 @@
         let random_color_code = "#"
         
         //Din kode for å løse problem 1 her.
+        function random_color_code() {
+            const tegn = "0123456789ABCDEF";
+            let kode = "#"
+            for (let i = 0; i < 6; i++) {
+                kode += tegn [Math.floor(Math.random() * 16)];
+            }
+            console.log(kode);
+            return kode;
 
+            tilfeldigeFargekoder();
+        }
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
+        function sjekkOrd(ord) {
+            if (progamming_words.includes(ord)) {
+                return "Ja";
+            } else {
+                return "Nei";
+            }
+        }
+
+        document.getElementById("resultat1").textContent = sjekkOrd("betingelse");
+        document.getElementById("resultat2").textContent = sjekkOrd("algoritme");
+        document.getElementById("resultat3").textContent = sjekkOrd("problemløsning")
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        function gjennomsnitt (tallArray) {
+            let sum = 0;
+            for (let i = 0; i < tallArray.length; i++) {
+                sum += tallArray[i];
+            }
+            return sum / tallArray.length;
+        }
+        document.getElementById("resultat1").textContent = gjennomsnitt(tall_array_en);
+        document.getElementById("resultat2").textContent = gjennomsnitt(tall_array_to);
     </script>
 </body>
 </html>
