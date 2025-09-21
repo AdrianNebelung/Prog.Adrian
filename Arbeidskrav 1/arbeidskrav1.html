@@ -46,56 +46,56 @@
 
     <script>
          //Variabel with company name
-        const company = "Adrian IT-hjelp"
+        const company = "Adrian IT-hjelp";
 
         //List of employees
         const employees = [
             {name: "Hans Hansen", position: "Programmerer", email: "hans.hansen@email.com", office: "316", image: "man"},
             {name: "Jens Jensen", position: "Programmerer", email: "jens.jensen@email.com", office: "323", image: "man2"},
             {name: "Trine Trinesdotter", position: "Programmerer", email: "trine.trinesdotter@email.com", office: "304", image: "woman"},
-            ]
+            ];
 
         //Secret keys to access url and images
         
         //Feil: Her var det en img som ikke var fullført. Noe som gjør at console.log ikke fungerer. Den klarer ikke å hente inn data pga at den ikke var satt inn som string.
         let images_folder = "img/";
 
-        let secret_key = 0
-        let ak_key
+        let secret_key = 0;
+        let ak_key;
             
         //Turn on or off safeguard to allow system to run
-        const safeguard = false
+        const safeguard = false;
             
         //Control of safeguard to create image folder name
         if(safeguard === true) {
-            ak_key = secret_key + 1
+            ak_key = secret_key + 1;
         }
 
         //Feil: Her så må vi fjerne +=. Hvis vi har += i koden så vil den gjøre endringer i image_folder og legge til en. I dette tilfellet bruker vi const og da skal det være noe konstant, uten endringer.
-        const safe_images_folder = images_folder + (ak_key ?? "")
+        const safe_images_folder = images_folder + (ak_key ?? "");
 
         //Feil: Her er det en feil ved stavelsen. Det skal ikke være console.logg, det skal være console.log
-        console.log("Image folder: " + safe_images_folder)
+        console.log("Image folder: " + safe_images_folder);
 
-        let HTML_employees = ""
+        let HTML_employees = "";
 
         //Control of safeguard to print employee list
         if(safeguard === true) {
-        //Feil: Her er enda en feil, istedenfor .map så bør vi bruke forEach. 
+        //Feil: Her er enda en feil, istedenfor .map så bør vi bruke forEach. .map er ikke egnet for å bygge  
             employees.forEach((e) => HTML_employees += `<article class="card">
                     <img src="${safe_images_folder}/${e.image}.png" alt="${e.name}" />
                     <p><strong>${e.name}</strong></p>
                     <p>${e.position} | Kontor: ${e.office}</p>
                     <p>${e.email}</p>
-                </article>`)
+                </article>`);
 
                 //Feil: Her er det feil fordi man skal skrive getElementById med en stor B og ikke en liten b. 
                 //Feil: Det er en feil til, employeeees skal skrives employees.
-                document.getElementById("employee_list").innerHTML = HTML_employees
+                document.getElementById("employee_list").innerHTML = HTML_employees;
             }
-
+            
         //System prints
-        document.getElementById("companyname").innerHTML = company
+        document.getElementById("companyname").innerHTML = company;
     </script>
 </body>
 </html>
