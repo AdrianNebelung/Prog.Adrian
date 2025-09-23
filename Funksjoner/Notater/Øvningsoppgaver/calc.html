@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+</head>
+<body>
+    <h1>Kalkulator</h1>
+    <ul id="result"></ul>
+    <script>
+        function calculator(num1 = 0, num2 = 0){
+            let sum = num1 + num2;
+            let diff = num1 - num2;
+            let div = num2 !== 0 ? (num1 / num2): "Uendlig";
+            let prod = num1 * num2;
+
+            let output = `
+            <li>${num1} + ${num2} = ${sum}</li>
+            <li>${num1} - ${num2} = ${diff}</li>
+            <li>${num1} / ${num2} = ${div}</li>
+            <li>${num1} * ${num2} = ${prod}</li>
+            `;
+
+            document.getElementById("result").innerText = output;
+        }
+
+        calculator(10, 5);
+    </script>
+</body>
+</html>

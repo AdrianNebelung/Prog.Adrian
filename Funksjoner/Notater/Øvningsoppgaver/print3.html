@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print3</title>
+</head>
+<body>
+    <p id ="name">Navn:</p>
+    <p id ="email">Email:</p>
+    <p id ="age">Alder:</p>
+
+    <script>
+        function skrivUt(
+            name = "Ikke oppgitt",
+            birthyear ="Ikke oppgitt",
+            email = "Ikke oppgitt"
+        ){
+
+            document.getElementById("name").innerText = name;
+            document.getElementById("email").innerText = email;
+
+            if(birthyear === "Ikke oppgitt") {
+                document.getElementById("age").innerText = "Ikke oppgitt";
+            } else {
+                let yearNum = Number(birthyear);
+
+                let currentYear = new Date().getFullYear();
+
+                let age = currentYear - yearNum;
+
+                document.getElementById("age").innerText = age;
+            }
+        }
+
+        skrivUt("Ola Nordmann", 1995, "olanordmann@mail.no");
+    </script>
+</body>
+</html>

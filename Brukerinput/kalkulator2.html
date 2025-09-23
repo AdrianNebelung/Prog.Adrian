@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator 2</title>
+</head>
+<body>
+  <h1>Kalkulator 2</h1>
+
+  
+  <input type="number" id="tall1" placeholder="Skriv inn tall 1">
+  
+  <select id ="operator">
+    <option value = "pluss">+</option>
+    <option value = "minus">-</option>
+    <option value = "gange">x</option>
+    <option value = "dele">/</option>
+  </select>
+
+  <input type ="number" id ="tall2" placeholder="Skriv inn tall 2">
+
+  <button id="regnut">Regn ut</button>
+
+  <h2>Resultat: <span id="resultat"></span></h2>
+  
+  <script>
+    function utregning(tall1, operator, tall2) {
+        const t1 = Number(tall1);
+        const t2 = Number(tall2);
+        let resultat;
+
+        if (operator === "pluss") {
+            resultat = t1 + t2;
+        } else if (operator === "minus") {
+            resultat = t1 - t2;
+        } else if (operator === "gange") {
+            resultat = t2 * t2;
+        } else if (operator === "dele") {
+            if (t2 !== 0) {
+                resultat = t1 / t2;
+            } else {
+                resultat = "Kan ikke dele på 0!";
+            }
+        } else {
+            resultat = "Ugyldig operator!";
+        }
+        
+        document.getElementById("resultat").textContent = resultat;
+    }
+
+    document.getElementById("regnut").addEventListener("click", function () {
+        const tall1 = document.getElementById("tall1").value;
+        const operator = document.getElementById("operator").value;
+        const tall2 = document.getElementById("tall2").value;
+
+        utregning(tall1, operator, tall2);
+    });
+  </script>
+</body>
+</html>

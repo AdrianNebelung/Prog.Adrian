@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator</title>
+</head>
+<body>
+  <h1>Kalkulator</h1>
+
+  
+  <input type="number" id="tall1" placeholder="Skriv inn tall 1">
+  <input type="number" id="tall2" placeholder="Skriv inn tall 2">
+
+  
+  <div>
+    <button id="pluss">+</button>
+    <button id="minus">-</button>
+    <button id="gange">×</button>
+    <button id="dele">÷</button>
+  </div>
+
+  
+  <h2>Resultat</h2>
+  <p id="resultat"></p>
+
+  <script>
+   
+    const tall1El = document.getElementById("tall1");
+    const tall2El = document.getElementById("tall2");
+    const resultatEl = document.getElementById("resultat");
+
+    
+    function hentTall() {
+      const t1 = Number(tall1El.value);
+      const t2 = Number(tall2El.value);
+      return [t1, t2];
+    }
+
+    
+    document.getElementById("pluss").addEventListener("click", function() {
+      const [t1, t2] = hentTall();
+      resultatEl.textContent = t1 + t2;
+    });
+
+    document.getElementById("minus").addEventListener("click", function() {
+      const [t1, t2] = hentTall();
+      resultatEl.textContent = t1 - t2;
+    });
+
+    document.getElementById("gange").addEventListener("click", function() {
+      const [t1, t2] = hentTall();
+      resultatEl.textContent = t1 * t2;
+    });
+
+    document.getElementById("dele").addEventListener("click", function() {
+      const [t1, t2] = hentTall();
+      if (t2 !== 0) {
+        resultatEl.textContent = t1 / t2;
+      } else {
+        resultatEl.textContent = "Kan ikke dele på 0!";
+      }
+    });
+  </script>
+</body>
+</html>

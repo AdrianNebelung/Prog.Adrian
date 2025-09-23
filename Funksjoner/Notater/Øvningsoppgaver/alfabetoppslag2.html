@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Alfabetoppslag</title>
+</head>
+<body>
+    <h1>Alfabetoppslag</h1>
+
+    <script>
+        function lookup(input) {
+            
+            const alphabet = [
+                "A", "B", "C", "D", "E", "F", "G",
+                "H", "I", "J", "K", "L", "M", "N",
+                "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z", "Æ", "Ø", "Å"
+            ];
+
+            
+            let upperLetter = String(input).toUpperCase();
+
+            
+            let p = document.createElement("p");
+
+            
+            if (alphabet.includes(upperLetter)) {
+                let index = alphabet.indexOf(upperLetter);
+                p.textContent = `${input} har plassering ${index + 1}`;
+            } else {
+                p.textContent = `${input} er ikke en bokstav i det norske alfabetet.`;
+            }
+
+            
+            document.body.appendChild(p);
+        }
+
+       
+        lookup("a");  
+        lookup("å");  
+        lookup(5);    
+        lookup("$");  
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Alfabetoppslag</title>
+</head>
+<body>
+    <h1>Alfabetoppslag</h1>
+
+    <script>
+        function lookup(letter) {
+            // Definer alfabetet (norsk: med Æ, Ø, Å på slutten)
+            const alphabet = [
+                "A", "B", "C", "D", "E", "F", "G",
+                "H", "I", "J", "K", "L", "M", "N",
+                "O", "P", "Q", "R", "S", "T", "U",
+                "V", "W", "X", "Y", "Z", "Æ", "Ø", "Å"
+            ];
+
+            // Konverter til stor bokstav
+            let upperLetter = letter.toUpperCase();
+
+            // Finn plassering
+            let index = alphabet.indexOf(upperLetter);
+
+            // Opprett nytt <p>-element
+            let p = document.createElement("p");
+
+            if (index !== -1) {
+                p.textContent = `${letter} har plassering ${index + 1}`;
+            } else {
+                p.textContent = `${letter} finnes ikke i det norske alfabetet.`;
+            }
+
+            // Legg til i body
+            document.body.appendChild(p);
+        }
+
+        // Eksempel på kall
+        lookup("a");
+        lookup("z");
+        lookup("å");
+        lookup("q");
+    </script>
+</body>
+</html>

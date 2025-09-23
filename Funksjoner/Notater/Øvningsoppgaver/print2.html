@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>print2.html</title>
+</head>
+<body>
+    <p id="name"></p>
+    <p id="mail"></p>
+    <p id="age"></p>
+
+    <script>
+        function skrivUt(name, birthyear, email) {
+       
+            document.getElementById("name").innerText = name;
+
+            document.getElementById("mail").innerText = email;
+
+            let currentYear = new Date().getFullYear();
+            let age = currentYear - birthyear;
+
+            document.getElementById("age").innerText = age;
+        }
+
+        skrivUt("Ola Nordmann", 1995, "ola.nordmann@example.com");
+    </script>
+</body>
+</html>

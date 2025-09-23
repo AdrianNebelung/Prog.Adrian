@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dagensord2</title>
+</head>
+<body>
+    <h1>Dagens ord er: <span id=""></span></h1>
+    <p id="ord"></p>
+    <button id ="velgord">Velg ord</button>
+
+    <script>
+        const ordliste = ["sykkel", "himmel", "katt", "hund", "bok", "pizza"];
+
+        function selectWord(){
+            const randomIndex = Math.floor(Math.random() * ordliste.length);
+            document.getElementById("ord").textContent = ordliste[randomIndex];
+        }
+        
+        document.getElementById("velgord").addEventListener("click", selectWord);
+    </script>
+</body>
+</html>
