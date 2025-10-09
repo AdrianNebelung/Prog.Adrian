@@ -19,18 +19,12 @@
         </form>
     </header>
     <main>
-        <!--Her har jeg endret navnet ifra Navn Navnesen, til noe mer troverdig. Også har jeg lagt inn email sånn folk skjønner at den seksjonen i HTML er email. Har også lag til en mailto sånn at det virker mer brukervennlig. Stillingene er også lagt til hver ansatt, og kontor.-->
         <section id="employee_list">
             <article class="card">
                 <img src="man.png" alt="Hans Hansen">
                 <p>Navn: Hans Hansen<br>Programmer | Kontor: 316 <br>Email: <a href="mailto:hans.hansen@email.com">hans.hansen@email.com</a></p>
             </article>
                 
-            <!--Her mangla det en article class. Jeg la en atricle til sånn at det er lik eksemplet på arbeidskrav siden..-->
-            <article class="card">
-                <img src="man2.png" alt="Jens Jensen">
-                <p>Navn: Jens Jensen <br>Programmer | Kontor: 323 <br>Email: <a href="mailto:jens.jensen@email.com">jens.jensen@email.com</a></p>
-            </article>
             <article class="card">
                 <img src="woman.png" alt="Trine Trinesdotter">
                 <p>Navn: Trine Trinesdotter <br>Programmer | Kontor: 304 <br>Email: <a href="mailto:trinesdotter@email.com">trinesdotter@email.com</a></p>
@@ -43,8 +37,10 @@
         </p>
     </footer>
 
-
+    
+    <!-- Feil 1: Script var feil fordi den hadde tre t-er. Dette vi skape feil til alle kodene som skrives inne i Script-taggen. -->
     <script>
+
          //Variabel with company name
         const company = "Adrian IT-hjelp";
 
@@ -57,40 +53,40 @@
 
         //Secret keys to access url and images
         
-        //Feil: Her var det en img som ikke var fullført. Noe som gjør at console.log ikke fungerer. Den klarer ikke å hente inn data pga at den ikke var satt inn som string.
-        let images_folder = "img/";
+        //Feil 2: Her var det en img som ikke var fullført. Noe som gjør at console.log ikke fungerer. Den klarer ikke å hente inn data pga at den ikke var satt inn som string. I første innlveringa skrev jeg img/, noe som er feil fordi når koden leter etter bildene så vil den se etter "img//" isteden for "img/".
+        let images_folder = "img";
 
         let secret_key = 0;
         let ak_key;
             
         //Turn on or off safeguard to allow system to run
-        const safeguard = false;
+        //Feil 3:  Denne var feil fordi den var false og ikke true. Det skal være true sånn at systemet skal kjøre, når koden er true så kan koden forsette å kjøre.
+        const safeguard = true;
             
         //Control of safeguard to create image folder name
         if(safeguard === true) {
             ak_key = secret_key + 1;
         }
 
-        //Feil: Her så må vi fjerne +=. Hvis vi har += i koden så vil den gjøre endringer i image_folder og legge til en. I dette tilfellet bruker vi const og da skal det være noe konstant, uten endringer.
-        const safe_images_folder = images_folder + (ak_key ?? "");
+        
+        const safe_images_folder = images_folder += ak_key;
 
-        //Feil: Her er det en feil ved stavelsen. Det skal ikke være console.logg, det skal være console.log
+        //Feil 4: Her er det en feil ved stavelsen. Det skal ikke være console.logg, det skal være console.log. Koden vil da lese feil hvis det er console.logg. 
         console.log("Image folder: " + safe_images_folder);
 
         let HTML_employees = "";
 
         //Control of safeguard to print employee list
         if(safeguard === true) {
-        //Feil: Her er enda en feil, istedenfor .map så bør vi bruke forEach. .map er ikke egnet for å bygge  
-            employees.forEach((e) => HTML_employees += `<article class="card">
+            employees.map((e) => HTML_employees += `<article class="card">
                     <img src="${safe_images_folder}/${e.image}.png" alt="${e.name}" />
                     <p><strong>${e.name}</strong></p>
                     <p>${e.position} | Kontor: ${e.office}</p>
                     <p>${e.email}</p>
                 </article>`);
 
-                //Feil: Her er det feil fordi man skal skrive getElementById med en stor B og ikke en liten b. 
-                //Feil: Det er en feil til, employeeees skal skrives employees.
+                //Feil 5: Her er det feil fordi man skal skrive getElementById med en stor B og ikke en liten b.
+                //Feil 6: Det er en feil til, employeeees skal skrives employees.
                 document.getElementById("employee_list").innerHTML = HTML_employees;
             }
             

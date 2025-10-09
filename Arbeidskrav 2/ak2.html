@@ -24,30 +24,54 @@
         let random_color_code = "#";
         
         //Din kode for å løse problem 1 her.
-        for (let i = 0; i < 6; i++) {
-            const random_index = Math.floor(Math.random() * hexadecimal_characters.length);
-            random_color_code += hexadecimal_characters[random_index];
+        function tilfeldigHexFarge() {
+            random_color_code = "#";
+
+            for (let i = 0; i < 6; i++) {
+                let tilfeldigHexFarge = Math.floor(Math.random() * hexadecimal_characters.length);
+                random_color_code = random_color_code + hexadecimal_characters[tilfeldigHexFarge];
+            }
+
+            return random_color_code;
         }
-        document.getElementById("random_color").textContent = random_color_code;
+
+        document.getElementById("random_color").innerText = tilfeldigHexFarge();
+
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"];
 
         //Din kode for å løse problem 2 her.
-        document.getElementById("betingelse_sjekk").textContent = programming_words.includes("betingelse") ? "Ja" : "Nei";
-        document.getElementById("algoritme_sjekk").textContent = programming_words.includes("algoritme") ? "Ja" : "Nei";
-        document.getElementById("problemlosning_sjekk").textContent = programming_words.includes("problemløsning") ? "Ja" : "Nei";
+        function finnesOrd(ord) {
+            if (programming_words.includes(ord)) {
+                return "Ja";
+            } else {
+                return "Nei";
+            }
+        }
+
+        document.getElementById("betingelse_sjekk").innerText = finnesOrd("betingelse");
+        document.getElementById("algoritme_sjekk").innerText = finnesOrd("algoritme");
+        document.getElementById("problemlosning_sjekk").innerText = finnesOrd("problemløsning");
+
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17];
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42];
 
         //Din kode for å løse problem 3 her.
-        const gjennomsnitt = (array) => {
-            const sum = array.reduce((acc, val) => acc + val, 0);
-            return (sum / array.length).toFixed(2);
+        function finnGjennomsnitt(tallArray) {
+            let sum = 0;
+
+            for (let i = 0; i < tallArray.length; i++) {
+                sum = sum + tallArray[i];
+            }
+
+            let gjennomsnitt = sum / tallArray.length;
+
+            return gjennomsnitt;
         }
 
-        document.getElementById("avg_array_one").textContent = gjennomsnitt(tall_array_en);
-        document.getElementById("avg_array_two").textContent = gjennomsnitt(tall_array_to);
+        document.getElementById("avg_array_one").innerText = finnGjennomsnitt(tall_array_en);
+        document.getElementById("avg_array_two").innerText = finnGjennomsnitt(tall_array_to);
     </script>
 </body>
 </html>
