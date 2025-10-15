@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Clock</title>
+</head>
+<body>
+    <canvas id = "clock"></canvas>
+
+    <script>
+        const canvas = document.getElementById("clock");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 700;
+        canvas.height = 700;
+
+        const circle = {
+            x: 350,
+            y: 350,
+            radius: 200,
+        }
+
+        ctx.beginPath();
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(350, 350);
+        ctx.lineTo(350, 190);
+        ctx.stroke();
+        
+        ctx.beginPath();
+        ctx.moveTo(200, 350);
+        ctx.lineTo(350, 350);
+        ctx.stroke();
+        ctx.closePath();
+
+
+        ctx.beginPath();
+
+        ctx.font = "30px Helvetica";
+        ctx.strokeText("12", 335, 180 );
+
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("1", 445 , 220 );
+
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("2", 510, 280);
+        
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("3", 520, 360);
+
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("4", 500, 440);
+       
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("5", 460, 500);
+        
+        ctx.font = "30 Helvetica";
+        ctx.strokeText("6", 350, 530)
+        ctx.font = "30 Helvetica";
+        ctx.font = "30 Helvetica";
+    </script>
+</body>
+</html>

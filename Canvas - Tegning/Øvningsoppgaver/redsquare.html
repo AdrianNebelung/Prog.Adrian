@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedSquare</title>
+</head>
+<body>
+    <canvas id = "redsquare"></canvas>
+    <script>
+        const canvas = document.getElementById("redsquare");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 600;
+        canvas.height = 600;
+
+        const rectangle1  = {
+            x: 0,
+            y: 0,
+            width: 200,
+            height: 200,
+        }
+
+        const rectangle2 = {
+            x: 200,
+            y: 200,
+            width: 200,
+            height: 200,
+        }
+
+        const rectangle3 = {
+            x: 400,
+            y: 400,
+            width: 200,
+            height: 200,
+        }
+
+        ctx.beginPath();
+        ctx.rect(rectangle1.x, rectangle1.y, rectangle1.width, rectangle1.height);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath()
+        ctx.rect(rectangle2.x, rectangle2.y, rectangle2.width, rectangle2.height);
+        ctx.fillStyle = "green";
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.rect(rectangle3.x, rectangle3.y, rectangle3.width, rectangle3.height);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+        
+
+
+
+    </script>
+        
+</body>
+</html>

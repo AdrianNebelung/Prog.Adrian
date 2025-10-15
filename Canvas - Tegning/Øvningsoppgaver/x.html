@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+</head>
+<body>
+    <canvas id = "kors"></canvas>
+    <script>
+        const canvas = document.getElementById("kors");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 500;
+        canvas.height = 500;
+
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(150, 150);
+        ctx.stroke();
+        ctx.closePath();
+
+        ctx.beginPath();
+        ctx.moveTo(150, 50);
+        ctx.lineTo(50, 150);
+        ctx.stroke();
+        ctx.closePath();
+
+
+
+    </script>
+</body>
+</html>
