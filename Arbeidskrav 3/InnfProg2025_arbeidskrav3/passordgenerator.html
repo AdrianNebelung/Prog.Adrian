@@ -6,49 +6,138 @@
     <title>Passordgenerator</title>
 </head>
 <body>
+
     <h1>Passordgenerator</h1>
-    <!-- Felter for brukervalg her-->
-     <label for="length">Lengde på passordet ditt:</label>
-     <input type="number" id="length" min="4" max="30" value="12"><br><br>
+    <h4>Min del</h4>
+    <p>Du kan ha minimum 4 karakterer og maksimum 20 karakterer.</p>
+    <label for="length">Lengde på passord:</label>
+    <input type="number" id="length" min="4" max="20" value="12"><br><br>
 
-    <p>Ditt passord: <span id ="generatedPassword"></span></p>
+    <fieldset>
+        <input type="checkbox" id="småbokstaver" checked>
+        <label for="småbokstaver">Små bokstaver</label>
 
+        <input type="checkbox" id="storebokstaver" checked>
+        <label for="storebokstaver">Store bokstaver</label>
+
+        <input type="checkbox" id="nummer" checked>
+        <label for="nummer">Tall</label>
+
+        <input type="checkbox" id="symboler" checked>
+        <label for="symboler">Spesialtegn</label>
+    </fieldset><br>
+
+    <button onclick="genererPassord()">Generer passord</button>
+
+    <p>Generert passord: <span id="result"></span></p>
+
+   
     <script>
-        const lowercase = "abcdefghijklmnopqrstuvwxyz";
-        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        const numbers = "0123456789";
-        const symbols = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
+        const småbokstaver = "abcdefghijklmnopqrstuvwxyz";
+        const storebokstaver = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const nummer = "0123456789";
+        const symboler = "!@#$%^&*()_+-=[]{}|;:',.<>?/`~";
 
-        function passwordgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
-            /* Din kode her */
-            let karakter = "";
-            if (includeLowercase) karakter += lowercase;
-            if (includeUppercase) karakter += uppercase;
-            if (includeNumbers) karakter += numbers;
-            if (includeSymbols) karakter += symbols;
-
-            if (karakter.length === 0) {
-                return "Velg minst ett tegnsett!";
+        function passgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
+            let characters = "";
+            
+            if (includeLowercase) {
+            characters += småbokstaver;
             }
+
+            if (includeUppercase){ 
+            characters += storebokstaver;
+            }
+
+            if (includeNumbers) {
+            characters += nummer;
+            }
+
+            if (includeSymbols) {
+            characters += symboler;
+            }
+
 
             let passord = "";
             for (let i = 0; i < length; i++) {
-                const tilfeldigKarakter = Math.floor(Math.random() * karakter.length);
-                passord += karakter[tilfeldigKarakter];
+                const tilfeldigIndex = Math.floor(Math.random() * characters.length);
+                passord += characters[tilfeldigIndex];
+                document.getElementById("result").textContent = passord;
             }
+
             return passord;
+        } 
+
+        function genererPassord() {
+            const length = document.getElementById("length").valueAsNumber;
+            const includeLowercase = document.getElementById("småbokstaver").checked;
+            const includeUppercase = document.getElementById("storebokstaver").checked;
+            const includeNumbers = document.getElementById("nummer").checked;
+            const includeSymbols = document.getElementById("symboler").checked;
+
+            if (length < 4 || length > 20) {
+                alert("Lengden må være mellom 4 og 20 karakterer!");
+                return;
+            }
+
+            const passord = passgenerator(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
+            document.getElementById("result").textContent = passord;    
+
         }
 
-        function generer() {
-            const lenght = parseInt(doument.getElementById(".length").value);
-            const includeLowercase = (document.getElementById("lowercase").checked);
-            const includeUppercase = (document.getElementById("uppercase").checked);
-            const includeNumbers = (document.getElementById("numbers").checked);
-            const includeSymbols = (document.getElementById("symbols").checked);
+    </script>
 
-            const passord = passwordgenerator(lenght, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
-            document.getElementById("generatedPassword").textContent = passoword;
-        }
+
+    <h1>Passordgenerator</h1>
+    <h4>Ai del</h4>
+    
+    <label for="length">Lengde på passord:</label>
+    <input type="number" id="length" min="4" max="32" value="12"><br><br>
+
+    <input type="checkbox" id="uppercase">
+    <label for="uppercase">Store bokstaver</label><br>
+
+    <input type="checkbox" id="lowercase" checked>
+    <label for="lowercase">Små bokstaver</label><br>
+
+    <input type="checkbox" id="numbers">
+    <label for="numbers">Tall</label><br>
+
+    <input type="checkbox" id="symbols">
+    <label for="symbols">Spesialtegn</label><br><br>
+
+    <button onclick="passwordgenerator()">Generer passord</button>
+
+    <h2>Passord:</h2>
+    <input type="text" id="password" readonly>
+
+    <script>
+        function passwordgenerator() {
+    const length = document.getElementById("length").value;
+    const useUpper = document.getElementById("uppercase").checked;
+    const useLower = document.getElementById("lowercase").checked;
+    const useNumbers = document.getElementById("numbers").checked;
+    const useSymbols = document.getElementById("symbols").checked;
+
+    let charset = "";
+    if (useUpper) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (useLower) charset += "abcdefghijklmnopqrstuvwxyz";
+    if (useNumbers) charset += "0123456789";
+    if (useSymbols) charset += "!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+    if (charset === "") {
+        alert("Velg minst én tegnkategori!");
+        return;
+    }
+
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+    }
+
+    document.getElementById("password").value = password;
+}
     </script>
 </body>
 </html>

@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Rekursiv utskrift av tall</h1>
+    <h3>Min kode</h3>
     <ul id="numberList">
         <li>Tall vil skrives ut her.</li>
     </ul>
@@ -18,11 +19,8 @@
             --Ditt svar her. Husk kilder--
         Rekursiv funksjon er 
         */
-        /*En rekursiv funskjon i JavaScript skal løse et problem i koden. Når man bruker denne type problemløsning så vil den kalle seg selv flere ganger for å finne ut problemet. Vi kan bruke denne type problemløsning i lister eller for å minske et problem i mindre biter, sånn at man kan fikse ett og ett problem lettere. Det er mye bedre enn å fikse et større problem. Ved rekursiv funksjon så får man et bedre bilde på hva problemet kan være. 
+        /*En rekursiv funskjon i JavaScript skal løse et problem i koden. Når man bruker denne type problemløsning så vil den kalle seg selv flere ganger for å finne ut problemet. Vi kan bruke denne type problemløsning i lister eller for å minske et problem i mindre biter, sånn at man kan fikse ett og ett problem lettere. Det er mye bedre å fikse et mindre problem, enn et større problem hvor man kanskje ikke har oversikt på hva som forårsaker det. Ved rekursiv funksjon så får man et bedre bilde på hva problemet kan være. 
         
-        Litteraturliste:
-        W3Schools:
-        W3Schools.(u.å).
         */
 
         // Oppgave 1.2 - Min løsning (uten hjelpemidler)
@@ -32,25 +30,60 @@
 
         function numberSelector() {
             // Din kode her
-            const tall = Math.floor(Math.random() * 9) + 1;
-
-
-            const li = document.createElement("li");
-            li.textContent = `Valgt tall: ${tall}`;
-            document.getElementById("numberList").appendChild(li);
-
-            if (tall === 4 || tall === 7) {
-                const stopp = document.createElement("li");
-                stopp.textContent = `Stopp! Tallet ${tall} ble valgt.`;
-                stopp.style.color = "red";
-                listeElement.appendChild(stopp);
-            } else {
-                numberSelector();
+           
+           const nummer = Math.floor(Math.random() * 9) + 1;
+           tallListe.push(nummer);
+           
+           
+           const li = document.createElement("li");
+           li.textContent = nummer;
+           listeElement.appendChild(li);
+           
+           
+           if (nummer === 4 || nummer === 7){
+               const stop = document.createElement("li");
+               stop.textContent = `Stopp! Tallet ${nummer} er valgt.`;
+               stop.style.color = "red";
+               document.getElementById("numberList").appendChild(stop);
+               return;
             }
+            numberSelector();
         }
 
         numberSelector();
+    </script>
+
+    
+    <h1>Tilfeldige tall</h1>
+    <h3>Ai-kode</h3>
+    <ul id="tall-liste"></ul>
+    <p id="stopp-melding" style="color: red;"></p>
+
+    <script>
+  
         /* Oppgave 1.3 - AI sin kode */
+        function velgTilStopptall(liste = []) {
+            const tall = Math.floor(Math.random() * 9) + 1;
+            liste.push(tall);
+
+            // Oppdater HTML-listen
+            const ul = document.getElementById('tall-liste');
+            const li = document.createElement('li');
+            li.textContent = tall;
+            ul.appendChild(li);
+
+            // Sjekk om tallet er 4 eller 7
+            if (tall === 4 || tall === 7) {
+                const melding = document.getElementById('stopp-melding');
+                melding.textContent = `Stopptall ${tall} ble valgt!`;
+                return liste;
+            } else {
+                return velgTilStopptall(liste);
+            }
+        }
+
+        // Start funksjonen når siden lastes
+        velgTilStopptall();
 
     </script>
 </body>
